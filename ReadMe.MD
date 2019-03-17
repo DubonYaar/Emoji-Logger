@@ -40,13 +40,13 @@ Logger.logLevel = .info
 Log with sevirity 'info'
 ```swift
 Logger.log(level:.info,"message","more information")
-```
-You can also ommit the level as .info is the default sevirity level
-```swift
+
+//You can also omit the level as .info is the default sevirity level
+
 Logger.log("message","more information")
-```
-Or
-```swift
+
+//Or
+
 Logger.info("message","more information")
 ```
 in the Debug window this will result with
@@ -57,9 +57,9 @@ in the Debug window this will result with
 Log with sevirity 'warning'
 ```swift
 Logger.log(level:.warning,"warning message","more warning information")
-```
-Or 
-```swift
+
+//Or 
+
 Logger.warning("warning message","more warning information")
 ```
 
@@ -72,7 +72,7 @@ Log with sevirity 'error'
 ```swift
 Logger.log(level:.error,"error message,","more stuff")
 
-or
+//Or
 
 Logger.error("error message,","more stuff")
 ```
