@@ -29,7 +29,7 @@ github "alongenosar/Logger"
 ```
 
 ## Usage
-Swift
+Swift Examples
 ```swift
 import Logger
 .
@@ -39,19 +39,23 @@ import Logger
 Logger.logLevel = .info
 
 Logger.log(level:.info,"message","more information")
-
+//in debug area 
 🔵info: message more information
 
 Logger.log(level:.warning,"warning message","more warning information")
-//In console 
-🔶info: warning message more warning information
+//in debug area 
+🔶warning: warning message more warning information
 
 Logger.log(level:.error,"error message","more error information")
-//In console 
-🔴info: error message more error information
+//in debug area 
+🔴error: error message more error information
+
+//Override message prefix regardless to its sevirity level
+Logger.log(level:.info,"apple message",["foo:"bar"],prefixOverride:"🍏apple:")
+//in debug area
+🍏apple: apple message {"foo":"bar"}
 
 ```
-
 
 
 
