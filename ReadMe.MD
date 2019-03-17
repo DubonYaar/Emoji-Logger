@@ -51,22 +51,28 @@ Logger.info("message","more information")
 
 //Log with sevirity 'warning'
 Logger.log(level:.warning,"warning message","more warning information")
+//or
+Logger.warning("warning message","more warning information")
+
 //in debug area 
 🔶warning: warning message more warning information
 
 //Log with sevirity 'error'
 Logger.log(level:.error,"error message,","more stuff")
+//or
+Logger.error("error message,","more stuff")
+
 //in debug area 
 🔴error: error message, more stuff
 
 //Override message prefix regardless to its sevirity level
-Logger.log(level:.info,"apple message",["foo:"bar"],prefixOverride:"🍏apple:")
+Logger.log("apple message",["foo:"bar"],prefixOverride:"🍏apple:")
 //in debug area
 🍏apple: apple message {"foo":"bar"}
 
 //Change level prefix
 Logger.set(prefix: "** ERROR **", forLevel: .error)
-Logger.log(level:.error,"error message,","more stuff")
+Logger.error("error message,","more stuff")
 //in debug area
 ** ERROR ** error message, more stuff
 
