@@ -40,8 +40,14 @@ Logger.logLevel = .info
 
 //Log with sevirity 'info'
 Logger.log(level:.info,"message","more information")
-//in debug area 
+//or
+Logger.log("message","more information")
+//or
+Logger.info("message","more information")
+
+//result in debug area 
 🔵info: message more information
+
 
 //Log with sevirity 'warning'
 Logger.log(level:.warning,"warning message","more warning information")
