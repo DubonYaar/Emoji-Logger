@@ -35,7 +35,7 @@ import Logger
 .
 .
 .
-//Set Logger sevirity level thrashold 
+//Set Logger sevirity level thrashold to the lowest level (.info)
 Logger.logLevel = .info
 
 //Log with sevirity 'info'
