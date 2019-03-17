@@ -5,7 +5,7 @@
 
 
 ## Overview
-A light weight Swift logger with sevirity levels
+A light weight Swift logger with sevirity levels and built in Emiji support
 
 ## Installation
 
