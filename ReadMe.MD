@@ -54,13 +54,22 @@ in the Debug window this will result with
 🔵info: message more information
 ```
 
-//Log with sevirity 'warning'
+Log with sevirity 'warning'
+```swift
 Logger.log(level:.warning,"warning message","more warning information")
-//or
+```
+Or 
+```swift
 Logger.warning("warning message","more warning information")
+```
+
+in the Debug window this will result with
+```bash
+🔶warning: warning message more warning information
+```
 
 //in debug area 
-🔶warning: warning message more warning information
+
 
 //Log with sevirity 'error'
 Logger.log(level:.error,"error message,","more stuff")
