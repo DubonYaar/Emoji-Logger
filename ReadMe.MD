@@ -1,1 +1,3 @@
-<div style="text-align:center"><img src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" /></div>.
+<p align="center">
+  <img width="460" height="300" src="http://www.fillmurray.com/460/300">
+</p>
