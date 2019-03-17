@@ -68,14 +68,14 @@ in the Debug window this will result with
 🔶warning: warning message more warning information
 ```
 
-//in debug area 
-
-
-//Log with sevirity 'error'
+Log with sevirity 'error'
+```swift
 Logger.log(level:.error,"error message,","more stuff")
 
-//or
+or
+
 Logger.error("error message,","more stuff")
+```
 
 //in debug area 
 🔴error: error message, more stuff
