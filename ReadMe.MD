@@ -49,7 +49,7 @@ Logger.log("message","more information")
 
 Logger.info("message","more information")
 ```
-in the Debug window this will result with
+In the Debug window this will result with
 ```bash
 🔵info: message more information
 ```
@@ -63,7 +63,7 @@ Logger.log(level:.warning,"warning message","more warning information")
 Logger.warning("warning message","more warning information")
 ```
 
-in the Debug window this will result with
+In the Debug window this will result with:
 ```bash
 🔶warning: warning message more warning information
 ```
@@ -77,13 +77,20 @@ Logger.log(level:.error,"error message,","more stuff")
 Logger.error("error message,","more stuff")
 ```
 
-//in debug area 
+In the Debug window this will result with
+```bash
 🔴error: error message, more stuff
+```
 
-//Override message prefix regardless to its sevirity level
+Override message prefix regardless to its sevirity level
+```swift
 Logger.log("apple message",["foo:"bar"],prefixOverride:"🍏apple:")
-//in debug area
+```
+
+in debug area
+```bash
 🍏apple: apple message {"foo":"bar"}
+```
 
 //Change level prefix
 Logger.set(prefix: "** ERROR **", forLevel: .error)
