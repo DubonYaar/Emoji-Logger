@@ -41,7 +41,7 @@ Log with sevirity 'info'
 ```swift
 Logger.log(level:.info,"message","more information")
 ```
-Or
+Alernaively you can ommit the level for .info sevirity
 ```swift
 Logger.log("message","more information")
 ```
@@ -50,9 +50,9 @@ Or
 Logger.info("message","more information")
 ```
 
-//result in debug area 
+```bash
 🔵info: message more information
-
+```
 
 //Log with sevirity 'warning'
 Logger.log(level:.warning,"warning message","more warning information")
