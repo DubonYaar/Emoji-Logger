@@ -36,6 +36,7 @@ Set Logger sevirity output level
 
 Logger.logLevel = .info
 ```
+<br/>    
 
 Log with sevirity 'info'
 ```swift
@@ -83,7 +84,7 @@ In the Debug window this will result with
 ```bash
 🔴error: error message, more stuff
 ```
-  
+<br/>
 
 Override message prefix regardless to its sevirity level
 ```swift
@@ -94,7 +95,7 @@ in debug area
 ```bash
 🍏apple: apple message {"foo":"bar"}
 ```
-
+<br/>    
 //Change level prefix
 Logger.set(prefix: "** ERROR **", forLevel: .error)
 Logger.error("error message,","more stuff")
