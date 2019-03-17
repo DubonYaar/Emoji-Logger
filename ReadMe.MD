@@ -52,7 +52,7 @@ Logger.info("message","more information")
 In the Debug window this will result with
 ```bash
 🔵info: message more information
-```    
+```<br/>    
   
 
 Log with sevirity 'warning'
