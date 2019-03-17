@@ -29,9 +29,11 @@ github "alongenosar/Logger"
 ```
 
 ## Usage
-Swift Examples
+Swift Examples. 
+
+Set Logger sevirity output level
 ```swift
-//Set Logger sevirity level thrashold to the lowest level (.info)
+
 Logger.logLevel = .info
 ```
 
