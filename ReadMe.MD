@@ -7,4 +7,18 @@
 # Overview
 A single class light weight Swift logger with sevirity levels
 
+# Installation
+
+## Manually
+
+
+## CocoaPods
+Add the following line to your Podfile:
+```bash
+pod 'Logger'
+```
+
+## Cartahge
+
+
 
