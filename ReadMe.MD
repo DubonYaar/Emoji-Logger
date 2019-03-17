@@ -5,7 +5,7 @@
 
 
 ## Overview
-A light weight Swift logger with sevirity levels and built in Emiji support
+A light weight Swift logger with sevirity levels and built in Emojis
 
 ## Installation
 
@@ -35,9 +35,15 @@ import Logger
 //Set Logger sevirity level thrashold 
 Logger.logLevel = .info
 
-//Log
-Logger.log(level:.info,"Foo","Barr")
+```swift
+Logger.log(level:.info,"Foo","Bar")
 '''
+
+```bsdh 
+🔵info: Foo Bar
+'''
+
+
 
 
 
