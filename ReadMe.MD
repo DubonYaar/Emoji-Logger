@@ -82,6 +82,7 @@ In the Debug window this will result with
 🔴error: error message, more stuff
 ```
 
+
 Override message prefix regardless to its sevirity level
 ```swift
 Logger.log("apple message",["foo:"bar"],prefixOverride:"🍏apple:")
