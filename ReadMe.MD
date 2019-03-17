@@ -38,12 +38,20 @@ import Logger
 //Set Logger sevirity level thrashold 
 Logger.logLevel = .info
 
-Logger.log(level:.info,"Foo","Bar")
+Logger.log(level:.info,"message","more information")
+
+🔵info: message more information
+
+Logger.log(level:.warning,"warning message","more warning information")
+//In console 
+🔶info: warning message more warning information
+
+Logger.log(level:.error,"error message","more error information")
+//In console 
+🔴info: error message more error information
+
 ```
-Result
-```bash 
-🔵info: Foo Bar
-'''
+
 
 
 
