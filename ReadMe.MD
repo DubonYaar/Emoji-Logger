@@ -5,7 +5,7 @@
 
 
 ## Overview
-A single class light weight Swift logger with sevirity levels
+A light weight Swift logger with sevirity levels
 
 ## Installation
 
