@@ -49,7 +49,7 @@ Or
 ```swift
 Logger.info("message","more information")
 ```
-
+in the Debug window this will result with
 ```bash
 🔵info: message more information
 ```
