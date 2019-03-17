@@ -31,19 +31,22 @@ github "alongenosar/Logger"
 ## Usage
 Swift Examples
 ```swift
-import Logger
-.
-.
-.
 //Set Logger sevirity level thrashold to the lowest level (.info)
 Logger.logLevel = .info
+```
 
-//Log with sevirity 'info'
+Log with sevirity 'info'
+```swift
 Logger.log(level:.info,"message","more information")
-//or
+```
+Or
+```swift
 Logger.log("message","more information")
-//or
+```
+Or
+```swift
 Logger.info("message","more information")
+```
 
 //result in debug area 
 🔵info: message more information
