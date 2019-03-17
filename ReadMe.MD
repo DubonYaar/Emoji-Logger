@@ -14,11 +14,31 @@ A light weight Swift logger with sevirity levels and built in Emiji support
 
 ### CocoaPods
 Add the following line to your Podfile:
+
 ```bash
 pod 'Logger'
 ```
 
-### Cartahge
+### Carthage
+Add the following line to your Cartfile:
+
+```bash
+github "alongenosar/Logger"
+```
+
+## Usage
+'''
+import Logger
+.
+.
+.
+//Set Logger sevirity level thrashold 
+Logger.logLevel = .info
+
+//Log
+Logger.log(level:.info,"Foo","Barr")
+'''
+
 
 
 
