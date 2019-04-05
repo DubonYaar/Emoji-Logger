@@ -7,6 +7,6 @@ Pod::Spec.new do |spec|
     spec.homepage         = 'https://github.com/alongenosar/Logger'
     spec.authors          = { 'Alon Genosar' => 'alon@gmail.com' }
     spec.summary          = 'Light weight Swift Logger with severity levels and Emojis'
-    spec.source           = { :git => 'https://github.com/alongenosar/Logger.git' }
+    spec.source           = { :git => 'https://github.com/alongenosar/Logger.git', :tag => '0.0.4' }
     spec.source_files     = 'Logger.swift'
   end
