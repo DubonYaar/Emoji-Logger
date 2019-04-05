@@ -1,8 +1,4 @@
 # Logger
-<p align="center">
-  <img width="166" height="208" src="https://github.com/alongenosar/Logger/blob/master/light.png">
-</p>
-
 
 ## Overview
 A light weight Swift logger with sevirity levels and built in Emojis
