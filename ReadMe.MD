@@ -91,10 +91,12 @@ in debug area
 ```bash
 🍏apple: apple message {"foo":"bar"}
 ```
-    
+  
+  
 Change level prefix
 ```Swift
-Logger.set(prefix: "** ERROR **", forLevel: .error)
+Logger.set(prefix: "** ERROR **", forLevel: .error)  
+
 Logger.error("error message,"more stuff")
 ```
 ```Bash
