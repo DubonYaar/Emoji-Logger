@@ -1,8 +1,4 @@
 # Logger
-<p align="center">
-  <img width="166" height="208" src="https://github.com/alongenosar/Logger/blob/master/light.png">
-</p>
-
 
 ## Overview
 A light weight Swift logger with sevirity levels and built in Emojis
@@ -95,13 +91,17 @@ in debug area
 ```bash
 🍏apple: apple message {"foo":"bar"}
 ```
-<br/>    
-//Change level prefix
-Logger.set(prefix: "** ERROR **", forLevel: .error)
-Logger.error("error message,","more stuff")
+  
+  
+Change level prefix
+```Swift
+Logger.set(prefix: "** ERROR **", forLevel: .error)  
+
+Logger.error("error message,"more stuff")
+```
+```Bash
 //in debug area
 ** ERROR ** error message, more stuff
-
 ```
 
 
