@@ -1,6 +1,6 @@
 //
 //  Logger.swift
-//  Snappers
+//  
 //
 //  Created by Alon Genosar on 07/02/2019.
 //  Copyright © 2019 Alon Genosar. All rights reserved.
