@@ -1,4 +1,4 @@
-# Logger
+# Emoji-Logger
 
 ## Overview
 A light weight Swift logger with sevirity levels and built in Emojis
