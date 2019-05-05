@@ -18,7 +18,7 @@ Light weight Swift console logger with sevirity levels and built in Emojis
 Add the following line to your Podfile:
 
 ```bash
-pod 'Logger'
+pod 'Emoji-Logger'
 ```
 
 ### Carthage
