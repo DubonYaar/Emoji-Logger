@@ -25,7 +25,7 @@ pod 'Emoji-Logger'
 Add the following line to your Cartfile:
 
 ```bash
-github "alongenosar/Logger"
+github "alongenosar/Emoji-Logger"
 ```
 
 ## Usage
