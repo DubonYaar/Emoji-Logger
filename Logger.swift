@@ -8,7 +8,7 @@
 
 import UIKit
 public enum LoggerLevelThreshold:Int { case info,warning,error,off }
-public enum LoggerLevel:Int { case info,warning,error }
+public enum LoggerLevel:Int,CaseIterable { case info,warning,error }
 public enum LoggerEmojis:String { case info = "🔵", warning = "🔶", error = "🔴", heart = "♥️", beark = "🐻", unicorn = "🦄", skull = "☠️", pumpkin = "🎃", pig = "🐷", mushroom = "🍄", star = "⭐️",leaf  = "☘️" }
 open class Logger {
     public static let defaultLogLevel:LoggerLevel = .info
@@ -19,9 +19,10 @@ open class Logger {
     public class func info(    _ items:Any ..., prefixOverride:String? = nil) { _log(level: .info, items,prefixOverride: prefixOverride) }
     public class func warning( _ items:Any ..., prefixOverride:String? = nil) { _log(level: .warning, items,prefixOverride: prefixOverride) }
     public class func error(   _ items:Any ..., prefixOverride:String? = nil) { _log(level: .error, items,prefixOverride: prefixOverride) }
+    private static var muted = Set<LoggerLevel>()
     private static var levelPrefix = [LoggerEmojis.info.rawValue + "info:",LoggerEmojis.warning.rawValue+"warning:",LoggerEmojis.error.rawValue,"error:"]
     class private func _log(level:LoggerLevel = defaultLogLevel,_ items:[Any],prefixOverride:String? = nil) {
-        if level.rawValue >= self.level.rawValue {
+        if level.rawValue >= self.level.rawValue && !muted.contains(level){
             var m = [String]()
             items.forEach { item in m.append(String(describing: item))}
             if showLevelPrefix {
@@ -30,4 +31,25 @@ open class Logger {
             print(m.joined(separator:" "))
         }
     }
+    //MARK: Custom Levels
+    // public class func addCustom(level:LoggerLevel,before:LoggerLevel) {
+        
+    // }
+    // public class func addCustom(level:LoggerLevel,after:LoggerLevel) {
+        
+    // }
+    //MARK: Mute/Unmute
+    public class func mute(level:LoggerLevel) { muted.insert(level) }
+    public class func unmute(level:LoggerLevel) { muted.remove(level) }
+    public class func unMuteAll() { muted.removeAll()}
+    //MARK: Solo
+    public class func solo(level:LoggerLevel) {
+        Logger.unSolo()
+        for l in LoggerLevel.allCases {
+            if l != level {
+                mute(level: l)
+            }
+        }
+    }
+    public class func unSolo() { muted.removeAll() }
 }
