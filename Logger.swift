@@ -1,6 +1,6 @@
 //
 //  Logger.swift
-//  
+//
 //
 //  Created by Alon Genosar on 07/02/2019.
 //  Copyright © 2019 Alon Genosar. All rights reserved.
@@ -31,25 +31,15 @@ open class Logger {
             print(m.joined(separator:" "))
         }
     }
-    //MARK: Custom Levels
-    // public class func addCustom(level:LoggerLevel,before:LoggerLevel) {
-        
-    // }
-    // public class func addCustom(level:LoggerLevel,after:LoggerLevel) {
-        
-    // }
-    //MARK: Mute/Unmute
     public class func mute(level:LoggerLevel) { muted.insert(level) }
     public class func unmute(level:LoggerLevel) { muted.remove(level) }
     public class func unMuteAll() { muted.removeAll()}
-    //MARK: Solo
-    public class func solo(level:LoggerLevel) {
-        Logger.unSolo()
+    public class func muteAllBut(level:LoggerLevel) {
+        Logger.unMuteAll()
         for l in LoggerLevel.allCases {
             if l != level {
                 mute(level: l)
             }
         }
     }
-    public class func unSolo() { muted.removeAll() }
 }
