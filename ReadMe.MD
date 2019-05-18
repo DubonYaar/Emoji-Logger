@@ -108,6 +108,18 @@ Logger.error("error message,"more stuff")
 ** ERROR ** error message, more stuff
 ```
 
+Mute/Umute level: Suppresses logs from a certain level
+```Swift
+Logger.mute(level:.info)
+
+Logger.unmute(level.info
+
+Logger.muteAllBut(level:.info)
+
+Logger.unmuteAll()
+```
+
+
 
 
 
