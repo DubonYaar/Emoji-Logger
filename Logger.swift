@@ -33,7 +33,7 @@ open class Logger {
     }
     public class func mute(level:LoggerLevel) { muted.insert(level) }
     public class func unmute(level:LoggerLevel) { muted.remove(level) }
-    public class func unMuteAll() { muted.removeAll()}
+    public class func unmuteAll() { muted.removeAll()}
     public class func muteAllBut(level:LoggerLevel) {
         Logger.unmuteAll()
         for l in LoggerLevel.allCases {
