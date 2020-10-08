@@ -11,24 +11,24 @@ public enum LoggerLevel: Int, CaseIterable { case info, warning, error }
 
 struct Logger {
     private static var levelPrefix = [Emoji.blueCircle.rawValue, Emoji.yellowCircle.rawValue, Emoji.redCircle.rawValue]
-    public static let defaultLogLevel: LoggerLevel = .info
-    public static var level: LoggerLevelThreshold = .info
-    public static var showLevelPrefix: Bool = true
-    public static var showGroupPrefix: Bool = true
+    open static let defaultLogLevel: LoggerLevel = .info
+    open static var level: LoggerLevelThreshold = .info
+    open static var showLevelPrefix: Bool = true
+    open static var showGroupPrefix: Bool = true
 
     //Prefix
-    public static func set(prefix: String, forLevel level: LoggerLevel) { levelPrefix[level.rawValue] = prefix}
+    open static func set(prefix: String, forLevel level: LoggerLevel) { levelPrefix[level.rawValue] = prefix}
 
-    public static func info( _ items: Any ..., emoji: Logger.Emoji? = nil, group: String? = nil) { _log(level: .info, items, prefix: emoji?.rawValue, group: group) }
-    public static func warning( _ items: Any ..., emoji: Logger.Emoji? = nil, group: String? = nil) { _log(level: .warning, items, prefix: emoji?.rawValue, group: group) }
-    public static func error(   _ items: Any ..., emoji: Logger.Emoji? = nil, group: String? = nil) { _log(level: .error, items, prefix: emoji?.rawValue, group: group) }
+    open static func info( _ items: Any ..., emoji: Logger.Emoji? = nil, group: String? = nil) { _log(level: .info, items, prefix: emoji?.rawValue, group: group) }
+    open static func warning( _ items: Any ..., emoji: Logger.Emoji? = nil, group: String? = nil) { _log(level: .warning, items, prefix: emoji?.rawValue, group: group) }
+    open static func error(   _ items: Any ..., emoji: Logger.Emoji? = nil, group: String? = nil) { _log(level: .error, items, prefix: emoji?.rawValue, group: group) }
 
     // Mute
     private static var muted = Set<LoggerLevel>()
-    public static func mute(level: LoggerLevel) { muted.insert(level) }
-    public static func unmute(level: LoggerLevel) { muted.remove(level) }
-    public static func unmuteAll() { muted.removeAll()}
-    public static func muteAllLevelsBut(level: LoggerLevel) {
+    open static func mute(level: LoggerLevel) { muted.insert(level) }
+    open static func unmute(level: LoggerLevel) { muted.remove(level) }
+    open static func unmuteAll() { muted.removeAll()}
+    open static func muteAllLevelsBut(level: LoggerLevel) {
         Logger.unmuteAll()
         for l in LoggerLevel.allCases where l != level {
             mute(level: l)
@@ -38,15 +38,15 @@ struct Logger {
     // Groups
     private static var filteredGroups = Set<String>()
 
-    public static func includeGroup(group: String) {
+    open static func includeGroup(group: String) {
         filteredGroups.insert(group)
     }
 
-    public static func uninclude(category: String) {
+    open static func uninclude(category: String) {
         filteredGroups.remove(category)
     }
 
-    public static func removeGroups() {
+    open static func removeGroups() {
         filteredGroups.removeAll()
     }
 
