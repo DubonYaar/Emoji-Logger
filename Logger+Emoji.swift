@@ -8,17 +8,7 @@
 
 import Foundation
 extension Logger {
-    enum Emoji: String {
-//        struct Categories {
-//            let SmileysAndPeople: [Emoji] = [.grinningFace]
-//            let AnimalsAndNature: [Emoji] = [.grinningFace]
-//            let FoodAndDrink: [Emoji] = [.grinningFace]
-//            let Activity: [Emoji] = [.grinningFace]
-//            let TravelAndPlaces: [Emoji] = [.grinningFace]
-//            let Objects: [Emoji] = [.grinningFace]
-//            let Symbols: [Emoji] = [.grinningFace]
-//            let Flags: [Emoji] = [.grinningFace]
-//        }
+    public enum Emoji: String {
        case grinningFace = "😀",
        grinningFaceWithBigEyes = "😃",
        grinningFaceWithSmilingEyes = "😄",
@@ -1825,4 +1815,15 @@ extension Logger {
        flagScotland = "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
        flagWales = "🏴󠁧󠁢󠁷󠁬󠁳󠁿"
     }
+
+    //        struct Categories {
+    //            let SmileysAndPeople: [Emoji] = [.grinningFace]
+    //            let AnimalsAndNature: [Emoji] = [.grinningFace]
+    //            let FoodAndDrink: [Emoji] = [.grinningFace]
+    //            let Activity: [Emoji] = [.grinningFace]
+    //            let TravelAndPlaces: [Emoji] = [.grinningFace]
+    //            let Objects: [Emoji] = [.grinningFace]
+    //            let Symbols: [Emoji] = [.grinningFace]
+    //            let Flags: [Emoji] = [.grinningFace]
+    //        }
 }
