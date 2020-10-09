@@ -62,8 +62,11 @@ public struct Logger {
         groupType = .filter
     }
 
+    // Core
+    //if isolate only grpups in in groups are displayed
     static private func _log(level: LoggerLevel = defaultLogLevel, _ items: [Any], prefix: String? = nil, group: String? = nil) {
-        guard groupType == .isolate && group != nil && groups.contains(group!) ||
+        guard groups.count == 0 || 
+              groupType == .isolate && group != nil && groups.contains(group!) ||
               groupType == .filter && (group == nil || !groups.contains(group!))
         else { return }
 
