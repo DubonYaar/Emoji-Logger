@@ -9,26 +9,26 @@ import UIKit
 public enum LoggerLevelThreshold: Int { case info, warning, error, off }
 public enum LoggerLevel: Int, CaseIterable { case info, warning, error }
 
-struct Logger {
+public struct Logger {
     private static var levelPrefix = [Emoji.blueCircle.rawValue, Emoji.yellowCircle.rawValue, Emoji.redCircle.rawValue]
-    open static let defaultLogLevel: LoggerLevel = .info
-    open static var level: LoggerLevelThreshold = .info
-    open static var showLevelPrefix: Bool = true
-    open static var showGroupPrefix: Bool = true
+    public static let defaultLogLevel: LoggerLevel = .info
+    public static var level: LoggerLevelThreshold = .info
+    public static var showLevelPrefix: Bool = true
+    public static var showGroupPrefix: Bool = true
 
     //Prefix
-    open static func set(prefix: String, forLevel level: LoggerLevel) { levelPrefix[level.rawValue] = prefix}
+    public static func set(prefix: String, forLevel level: LoggerLevel) { levelPrefix[level.rawValue] = prefix}
 
-    open static func info( _ items: Any ..., emoji: Logger.Emoji? = nil, group: String? = nil) { _log(level: .info, items, prefix: emoji?.rawValue, group: group) }
-    open static func warning( _ items: Any ..., emoji: Logger.Emoji? = nil, group: String? = nil) { _log(level: .warning, items, prefix: emoji?.rawValue, group: group) }
-    open static func error(   _ items: Any ..., emoji: Logger.Emoji? = nil, group: String? = nil) { _log(level: .error, items, prefix: emoji?.rawValue, group: group) }
+    public static func info( _ items: Any ..., emoji: Logger.Emoji? = nil, group: String? = nil) { _log(level: .info, items, prefix: emoji?.rawValue, group: group) }
+    public static func warning( _ items: Any ..., emoji: Logger.Emoji? = nil, group: String? = nil) { _log(level: .warning, items, prefix: emoji?.rawValue, group: group) }
+    public static func error(   _ items: Any ..., emoji: Logger.Emoji? = nil, group: String? = nil) { _log(level: .error, items, prefix: emoji?.rawValue, group: group) }
 
     // Mute
     private static var muted = Set<LoggerLevel>()
-    open static func mute(level: LoggerLevel) { muted.insert(level) }
-    open static func unmute(level: LoggerLevel) { muted.remove(level) }
-    open static func unmuteAll() { muted.removeAll()}
-    open static func muteAllLevelsBut(level: LoggerLevel) {
+    public static func mute(level: LoggerLevel) { muted.insert(level) }
+    public static func unmute(level: LoggerLevel) { muted.remove(level) }
+    public static func unmuteAll() { muted.removeAll()}
+    public static func muteAllLevelsBut(level: LoggerLevel) {
         Logger.unmuteAll()
         for l in LoggerLevel.allCases where l != level {
             mute(level: l)
@@ -36,28 +36,43 @@ struct Logger {
     }
 
     // Groups
-    private static var filteredGroups = Set<String>()
+    enum EmojiGroupType { case isolate, filter }
+    private static var groups = Set<String>()
+    private static var groupType: EmojiGroupType = .filter
 
-    open static func includeGroup(group: String) {
-        filteredGroups.insert(group)
+    public static func isolateGroup(group: String) {
+        isolateGroup(groups: [group])
     }
 
-    open static func uninclude(category: String) {
-        filteredGroups.remove(category)
+    public static func isolateGroup(groups: [String]) {
+        self.groups = Set(groups.map { $0 })
+        groupType = .isolate
     }
 
-    open static func removeGroups() {
-        filteredGroups.removeAll()
+    public static func filterGroup(group: String) {
+        filterGroup(groups: [group])
+    }
+    public static func filterGroup(groups: [String]) {
+        self.groups = Set(groups.map { $0 })
+        groupType = .filter
+    }
+
+    public static func clearGroups() {
+        groups = Set<String>()
+        groupType = .filter
     }
 
     static private func _log(level: LoggerLevel = defaultLogLevel, _ items: [Any], prefix: String? = nil, group: String? = nil) {
-        guard (group != nil && filteredGroups.contains(group!)) || filteredGroups.count == 0 else { return }
+        guard groupType == .isolate && group != nil && groups.contains(group!) ||
+              groupType == .filter && (group == nil || !groups.contains(group!))
+        else { return }
+
         if level.rawValue >= self.level.rawValue && !muted.contains(level) {
             var m = [String]()
             items.forEach { item in m.append(String(describing: item))}
 
             if let group = group, showGroupPrefix {
-                m.insert("(group: \(group))", at: 0)
+                m.insert("[Group: \(group)]", at: 0)
             }
 
             if showLevelPrefix {
