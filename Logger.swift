@@ -40,19 +40,19 @@ public struct Logger {
     private static var groups = Set<String>()
     private static var groupType: EmojiGroupType = .filter
 
-    public static func isolateGroup(group: String) {
-        isolateGroup(groups: [group])
+    public static func isolate(group: String) {
+        isolate(groups: [group])
     }
 
-    public static func isolateGroup(groups: [String]) {
+    public static func isolate(groups: [String]) {
         self.groups = Set(groups.map { $0 })
         groupType = .isolate
     }
 
-    public static func filterGroup(group: String) {
-        filterGroup(groups: [group])
+    public static func filter(group: String) {
+        filter(groups: [group])
     }
-    public static func filterGroup(groups: [String]) {
+    public static func filter(groups: [String]) {
         self.groups = Set(groups.map { $0 })
         groupType = .filter
     }
@@ -65,8 +65,7 @@ public struct Logger {
     // Core
     //if isolate only grpups in in groups are displayed
     static private func _log(level: LoggerLevel = defaultLogLevel, _ items: [Any], prefix: String? = nil, group: String? = nil) {
-        guard groups.count == 0 || 
-              groupType == .isolate && group != nil && groups.contains(group!) ||
+        guard groups.count == 0 || groupType == .isolate && group != nil && groups.contains(group!) ||
               groupType == .filter && (group == nil || !groups.contains(group!))
         else { return }
 
