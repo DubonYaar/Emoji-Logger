@@ -19,9 +19,9 @@ public struct Logger {
     //Prefix
     public static func set(prefix: String, forLevel level: LoggerLevel) { levelPrefix[level.rawValue] = prefix}
 
-    public static func info( _ items: Any ..., emoji: Logger.Emoji? = nil, group: String? = nil) { _log(level: .info, items, prefix: emoji?.rawValue, group: group) }
-    public static func warning( _ items: Any ..., emoji: Logger.Emoji? = nil, group: String? = nil) { _log(level: .warning, items, prefix: emoji?.rawValue, group: group) }
-    public static func error(   _ items: Any ..., emoji: Logger.Emoji? = nil, group: String? = nil) { _log(level: .error, items, prefix: emoji?.rawValue, group: group) }
+    public static func info( _ items: Any ..., emoji: Logger.Emoji? = nil, tag: String? = nil) { _log(level: .info, items, prefix: emoji?.rawValue, tag: tag) }
+    public static func warning( _ items: Any ..., emoji: Logger.Emoji? = nil, tag: String? = nil) { _log(level: .warning, items, prefix: emoji?.rawValue, tag: tag) }
+    public static func error(   _ items: Any ..., emoji: Logger.Emoji? = nil, tag: String? = nil) { _log(level: .error, items, prefix: emoji?.rawValue, tag: tag) }
 
     // Mute
     private static var muted = Set<LoggerLevel>()
@@ -40,40 +40,40 @@ public struct Logger {
     private static var groups = Set<String>()
     private static var groupType: EmojiGroupType = .filter
 
-    public static func isolate(group: String) {
-        isolate(groups: [group])
+    public static func isolate(tag: String) {
+        isolate(tags: [tag])
     }
 
-    public static func isolate(groups: [String]) {
-        self.groups = Set(groups.map { $0 })
+    public static func isolate(tags: [String]) {
+        self.groups = Set(tags.map { $0 })
         groupType = .isolate
     }
 
-    public static func filter(group: String) {
-        filter(groups: [group])
+    public static func filter(tag: String) {
+        filter(tags: [tag])
     }
-    public static func filter(groups: [String]) {
-        self.groups = Set(groups.map { $0 })
+    public static func filter(tags: [String]) {
+        self.groups = Set(tags.map { $0 })
         groupType = .filter
     }
 
-    public static func clearGroups() {
+    public static func clearTags() {
         groups = Set<String>()
         groupType = .filter
     }
 
     // Core
     //if isolate only grpups in in groups are displayed
-    static private func _log(level: LoggerLevel = defaultLogLevel, _ items: [Any], prefix: String? = nil, group: String? = nil) {
-        guard groups.count == 0 || groupType == .isolate && group != nil && groups.contains(group!) ||
-              groupType == .filter && (group == nil || !groups.contains(group!))
+    static private func _log(level: LoggerLevel = defaultLogLevel, _ items: [Any], prefix: String? = nil, tag: String? = nil) {
+        guard groups.count == 0 || groupType == .isolate && tag != nil && groups.contains(tag!) ||
+              groupType == .filter && (tag == nil || !groups.contains(tag!))
         else { return }
 
         if level.rawValue >= self.level.rawValue && !muted.contains(level) {
             var m = [String]()
             items.forEach { item in m.append(String(describing: item))}
 
-            if let group = group, showGroupPrefix {
+            if let group = tag, showGroupPrefix {
                 m.insert("[Group: \(group)]", at: 0)
             }
 
